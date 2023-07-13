@@ -5,7 +5,6 @@ const User = require('../../models/user');
 module.exports = {
   create,
   login,
-  checkToken
 };
 
 async function create(req, res) {
@@ -34,13 +33,6 @@ async function login(req, res) {
     res.status(400).json('Invalid Credentials');
   }
 }
-
-function checkToken(req, res) {
-  // Verify middleware is doing its job
-  console.log('req.user', req.user);
-  res.json(req.exp);
-}
-
 
 /*-=======- Helper Functions -=======-*/
 

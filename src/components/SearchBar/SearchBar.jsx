@@ -2,15 +2,21 @@ import { useState } from 'react';
 import * as weatherAPI from '../../utilities/weather-api';
 
 export default function SearchBar() {
-  const [city, setCity] = useState('');
+  const [location, setLocation] = useState('');
 
   function handleChange(evt) {
-    setCity(evt.target.value);
+    setLocation(evt.target.value);
   }
 
   async function handleSearch() {
-    const weather = await weatherAPI.getWeatherByCity(city)
-    alert(JSON.stringify(weather));
+    try {
+      const weather = await weatherAPI.getWeatherData(location);
+      alert(JSON.stringify(weather)); // remove
+      console.log(weather); // remove
+    } catch {
+      // TODO: create actual error handle
+      throw new Error ('Something went wrong');
+    }
   }
 
   return (
@@ -18,7 +24,7 @@ export default function SearchBar() {
     <input 
       className='text-black'
       type="text" 
-      value={city}
+      value={location}
       onChange={handleChange}
       onKeyDown={(evt) => {
         if (evt.key === 'Enter') {

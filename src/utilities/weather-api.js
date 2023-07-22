@@ -1,13 +1,25 @@
-const BASE_URL = 'https://api.open-meteo.com/v1';
+const BASE_URL = 'http://api.weatherapi.com/v1';
+const API_KEY = process.env.REACT_APP_API_KEY;
 
-export async function getWeatherByCity(city) {
-  const encodedCity = encodeURIComponent(city);
-  const url = `${BASE_URL}/forecast?city=${encodedCity}`;
+export async function getWeatherData(location) {
+  try {
+    const city = encodeURIComponent(location);
+    const data = await getCurrentWeather(city);
+    return data;
+  } catch {
+    // TODO: Make actual error message / status
+    throw new Error ('Something went wrong');
+  }
+}
+
+export async function getCurrentWeather(city) {
+  const url = `${BASE_URL}/current.json?key=${API_KEY}&q=${city}`;
   try {
     const res = await fetch(url);
     const data = await res.json();
-    return data
-  } catch (err) {
-    throw new Error ('An error occured while fetching weather data');
+    return data;
+  } catch {
+    // TODO: Make actual error message / status
+    throw new Error ('Something went wrong');
   }
 }

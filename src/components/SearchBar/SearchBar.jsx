@@ -11,7 +11,6 @@ export default function SearchBar() {
   async function handleSearch() {
     try {
       const weather = await weatherAPI.getWeatherData(location);
-      alert(JSON.stringify(weather)); // remove
       console.log(weather); // remove
     } catch {
       // TODO: create actual error handle

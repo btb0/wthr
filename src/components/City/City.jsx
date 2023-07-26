@@ -1,17 +1,11 @@
 // TODO: remove temp state import
 import { useState } from 'react';
 
-export default function City({ weatherData }) {
+export default function City({ weatherData, chanceOfRain }) {
     // TODO: remove temporary test state: (this will be toggled between C and F in the settingsPage)
-    const [temp, setTemp] = useState('F');
+    const [temp, setTemp] = useState('C');
 
   if (!weatherData.location) return null;
-
-  function chanceOfRain() {
-    const currTime = new Date().toLocaleTimeString([], {hour12: false});
-    const currDay = weatherData.forecast.forecastday[0]
-    return currDay.hour[parseInt(currTime.slice(0, 2))].chance_of_rain
-  }
 
   return (
     <section className='bg-componentDark rounded-xl grid grid-cols-2 grid-rows-3 w-7/12 h-1/3 my-4 pl-11'>

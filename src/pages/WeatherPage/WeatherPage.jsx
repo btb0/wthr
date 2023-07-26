@@ -1,9 +1,18 @@
-import SearchBar from "../../components/SearchBar/SearchBar";
+import { useState } from 'react';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import NavMenu from '../../components/NavMenu/NavMenu';
+import City from '../../components/City/City';
 
-export default function WeatherPage() {
+export default function WeatherPage({ user, setUser }) {
+  const [location, setLocation] = useState('');
+  const [weatherData, setWeatherData] = useState({});
+
   return (
-    <main>
-      <SearchBar />
+    <main className="h-full">
+      <NavMenu user={user} setUser={setUser} />
+      <SearchBar location={location} setLocation={setLocation} setWeatherData={setWeatherData} />
+      <span>Welcome, {user.name.charAt(0).toUpperCase() + user.name.slice(1)}</span>
+      <City weatherData={weatherData} />
     </main>
   );
 }

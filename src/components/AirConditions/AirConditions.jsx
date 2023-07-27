@@ -2,7 +2,7 @@ export default function AirConditions({ weatherData, chanceOfRain }) {
   if (!weatherData.location) return null;
 
   return (
-    <section className="bg-componentDark rounded-xl flex flex-col p-6">
+    <section className="bg-componentDark rounded-xl flex flex-col p-6 h-1/3">
       <div className="flex justify-between">
         <h1 className="mb-3">Air Conditions</h1>
         <button className="rounded-full bg-blue-600">See more</button>

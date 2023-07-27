@@ -9,7 +9,7 @@ export default function DailyForecast({ weatherData }) {
   ));
 
   return (
-    <section className="bg-componentDark rounded-xl flex flex-col p-6 mb-4">
+    <section className="bg-componentDark rounded-xl flex flex-col p-6 h-1/3">
       <h2 className="mb-3">Today's Forecast</h2>
       <div className="flex">
         {hourlyWeather}

@@ -8,7 +8,7 @@ export default function City({ weatherData, chanceOfRain }) {
   if (!weatherData.location) return null;
 
   return (
-    <section className='bg-componentDark rounded-xl grid grid-cols-2 grid-rows-3 w-7/12 h-1/3 my-4 pl-11'>
+    <section className='rounded-xl grid grid-cols-2 grid-rows-3 mt-4 pl-11 h-1/3'>
       <div>
         <h1 className="text-white text-5xl">{weatherData.location.name}</h1>
       </div>

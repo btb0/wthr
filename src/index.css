@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .grid-cols-custom {
+  grid-template-columns: 0fr auto 30%;
+} */

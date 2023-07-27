@@ -9,6 +9,7 @@ export default function SearchBar({ location, setLocation, setWeatherData }) {
     try {
       const weather = await weatherAPI.getWeatherData(location);
       setWeatherData(weather);
+      setLocation('');
       console.log(weather); // remove
     } catch {
       // TODO: create actual error handle
@@ -24,7 +25,7 @@ export default function SearchBar({ location, setLocation, setWeatherData }) {
       placeholder='Search by City or Zip Code'
       onChange={handleChange}
       onKeyDown={(evt) => {
-        if (evt.key === 'Enter') {
+        if (evt.key === 'Enter' && evt.target.value) {
           handleSearch();
         }
       }}

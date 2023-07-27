@@ -16,11 +16,11 @@ export default function WeatherPage({ user, setUser }) {
     return currDay.hour[parseInt(currTime.slice(0, 2))].chance_of_rain
   }
 
+  /* <span>Welcome, {user.name.charAt(0).toUpperCase() + user.name.slice(1)}</span> */
   return (
-    <main className="h-full grid grid-cols-custom grid-rows-1">
+    <main className="h-full flex">
       <NavMenu user={user} setUser={setUser} />
-      <section className='flex flex-col h-full'>
-        {/* <span>Welcome, {user.name.charAt(0).toUpperCase() + user.name.slice(1)}</span> */}
+      <section className='flex flex-col h-full flex-1 max-w-full'>
         <div className='h-full flex flex-col gap-4'>
           <SearchBar location={location} setLocation={setLocation} setWeatherData={setWeatherData} />
           <City weatherData={weatherData} chanceOfRain={chanceOfRain} />
@@ -28,7 +28,19 @@ export default function WeatherPage({ user, setUser }) {
           <AirConditions weatherData={weatherData} chanceOfRain={chanceOfRain} />
         </div>
       </section>
-      <WeeklyForecast />
+      <WeeklyForecast weatherData={weatherData} />
     </main>
+    // <main className="h-full grid grid-cols-custom grid-rows-1">
+    //   <NavMenu user={user} setUser={setUser} />
+    //   <section className='flex flex-col h-full max-w-full'>
+    //     <div className='h-full flex flex-col gap-4'>
+    //       <SearchBar location={location} setLocation={setLocation} setWeatherData={setWeatherData} />
+    //       <City weatherData={weatherData} chanceOfRain={chanceOfRain} />
+    //       <DailyForecast weatherData={weatherData} />
+    //       <AirConditions weatherData={weatherData} chanceOfRain={chanceOfRain} />
+    //     </div>
+    //   </section>
+    //   <WeeklyForecast weatherData={weatherData} />
+    // </main>
   );
 }

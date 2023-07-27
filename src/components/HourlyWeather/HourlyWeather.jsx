@@ -1,3 +1,4 @@
+// Individual components for each hour shown in DailyForecast (Today's Forecast)
 export default function HourlyWeather({ hour }) {
   return (
     <div>

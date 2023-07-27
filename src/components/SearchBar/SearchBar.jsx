@@ -19,7 +19,7 @@ export default function SearchBar({ location, setLocation, setWeatherData }) {
 
   return (
     <input 
-      className='bg-componentDark rounded-xl leading-10 text-white pl-3'
+      className='bg-componentDark rounded-xl leading-10 text-white pl-3 m-w-25'
       type="text" 
       value={location}
       placeholder='Search by City or Zip Code'

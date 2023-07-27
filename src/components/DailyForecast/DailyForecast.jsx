@@ -1,5 +1,6 @@
 import HourlyWeather from "../HourlyWeather/HourlyWeather";
 
+// Shown as Today's Forecast on WeatherPage
 export default function DailyForecast({ weatherData }) {
   if (!weatherData.location) return null;
 

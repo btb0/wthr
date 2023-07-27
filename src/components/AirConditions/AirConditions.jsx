@@ -1,3 +1,4 @@
+// Air conditions component on WeatherPage
 export default function AirConditions({ weatherData, chanceOfRain }) {
   if (!weatherData.location) return null;
 

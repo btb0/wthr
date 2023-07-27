@@ -8,7 +8,7 @@ export default function NavMenu({ user, setUser }) {
   }
 
   return (
-    <aside className="float-left flex flex-col items-center h-full rounded-3xl w-28 bg-componentDark mr-6 p-4 row-span-2">
+    <aside className="float-left flex flex-col items-center h-full rounded-3xl w-28 min-w-28 max-w-28 bg-componentDark mr-6 p-4 row-span-2">
       <img className='h-12 w-12 mt-2' src="/storm.png" alt="wthr Icon" />
       <div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

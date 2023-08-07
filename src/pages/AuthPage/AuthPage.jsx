@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import * as locationAPI from '../../utilities/location-api';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LoginForm from '../../components/LoginForm/LoginForm';
 
@@ -7,6 +8,11 @@ export default function AuthPage({ setUser }) {
 
   function handleClick() {
     setFormState(formState === 'LOGIN' ? 'SIGNUP' : 'LOGIN');
+  }
+
+  async function getUserLocation() {
+    const userLocation = await locationAPI.getUserLocation();
+    console.log(userLocation);
   }
 
   return (
@@ -19,9 +25,9 @@ export default function AuthPage({ setUser }) {
       </button>
       {
         formState === 'LOGIN' ? 
-        <LoginForm setUser={setUser} />
+        <LoginForm setUser={setUser} getUserLocation={getUserLocation} />
         :
-        <SignUpForm setUser={setUser} />
+        <SignUpForm setUser={setUser} getUserLocation={getUserLocation} />
       }
     </main>
   );

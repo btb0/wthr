@@ -10,7 +10,7 @@ export default function SearchBar({ location, setLocation, setWeatherData }) {
       const weather = await weatherAPI.getWeatherData(location);
       setWeatherData(weather);
       setLocation('');
-      console.log(weather); // remove
+      console.log(weather); // todo: remove
     } catch {
       // TODO: create actual error handle
       throw new Error ('Something went wrong');

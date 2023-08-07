@@ -9,7 +9,7 @@ import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 export default function WeatherPage({ user, setUser }) {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState({});
-  console.log(Object.keys(weatherData))
+
   function chanceOfRain() {
     const currTime = new Date().toLocaleTimeString([], {hourCycle: 'h23'});
     const currDay = weatherData.forecast.forecastday[0]

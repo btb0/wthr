@@ -5,25 +5,23 @@ const IP_API_KEY = process.env.REACT_APP_IP_API_KEY;
 
 /* ========= Location Via Geolocation API ========= */
 
-export function getUserLocation() {
+export async function getUserLocation() {
   // Check if Geolocation API is supported in user's browser
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successCb, errorCb);
+    try {
+      const position = await navigator.geolocation.getCurrentPosition();
+      const { latitude: lat, longitude: long } = position.coords;
+      return getCityFromCoords(lat, long);
+    } catch {
+      // There was an error retreiving the user's location // e.g. user denied location sharing permission - so use IP location instead
+      // alert('Error while retrieving your location. Please try again later.');
+      return getCityFromIP();
+    }
   } else {
     // Geolocation API is not supported in the user's browser - so use IP location instead
     alert('Geolocation is not supported in your browser. Please allow location access or use a different browser to use this feature for a more accurate default response.');
     getCityFromIP();
   }
-}
-// User's location retrieved successfully
-function successCb(position) {
-  const { latitude: lat, longitude: long } = position.coords;
-  getCityFromCoords(lat, long);
-}
-// There was an error retreiving the user's location // e.g. user denied location sharing permission - so use IP location instead
-function errorCb() {
-  // alert('Error while retrieving your location. Please try again later.');
-  getCityFromIP();
 }
 
 async function getCityFromCoords(lat, long) {

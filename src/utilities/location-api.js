@@ -30,6 +30,7 @@ async function getCityFromCoords(lat, long) {
   try {
     const res = await fetch(url);
     const data = await res.json();
+    console.log('geolocation api info', data);
     return data;
   } catch (error) {
     // todo: update error message

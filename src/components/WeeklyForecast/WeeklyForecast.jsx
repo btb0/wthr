@@ -15,12 +15,10 @@ export default function WeeklyForecast({ weatherData }) {
     mouseY.set(clientY - top);
   }
 
-  const dailyWeather = weatherData.forecast?.forecastday.map(day => (
-    <DailyWeather day={day} key={day.date_epoch} />
+  const dailyWeather = weatherData.forecast?.forecastday.map((day, idx) => (
+    <DailyWeather day={day} idx={idx} key={day.date_epoch} />
   ));
 
-
-  // RETURN HERE ------------
   return (
     <section 
       onMouseMove={handleMouseMove} 
@@ -31,8 +29,8 @@ export default function WeeklyForecast({ weatherData }) {
           background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgb(14 165 233 / 0.15), transparent 80%)`
         }}
       />
-      <h2 className="mb-3">7-Day Forecast</h2>
-      <ul className='h-full flex flex-col justify-between'>
+      <h2 className="mb-3 text-darkGreyText">7-Day Forecast</h2>
+      <ul className='h-full flex flex-col'>
         {dailyWeather}
       </ul>
     </section>

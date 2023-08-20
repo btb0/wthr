@@ -14,8 +14,8 @@ export default function WeatherPage({ user, setUser }) {
   useEffect(() => {
     async function fetchUserLocation() {
       try {
-        const userLocation = await getUserLocation();
-        console.log(userLocation); // isnt working because more than one request per second being made to api (only allowed one)
+        // const userLocation = await getUserLocation();
+        // isnt working because more than one request per second being made to api (only allowed one)
       } catch (err) {
         // Todo: add error handle
         console.log(err);

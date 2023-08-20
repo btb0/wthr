@@ -1,14 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import NavMenu from '../../components/NavMenu/NavMenu';
 import City from '../../components/City/City';
 import DailyForecast from '../../components/DailyForecast/DailyForecast';
 import AirConditions from '../../components/AirConditions/AirConditions';
 import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
+import { getUserLocation } from '../../utilities/location-api';
 
 export default function WeatherPage({ user, setUser }) {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState({});
+
+  useEffect(() => {
+    async function fetchUserLocation() {
+      try {
+        const userLocation = await getUserLocation();
+        console.log(userLocation); // isnt working because more than one request per second being made to api (only allowed one)
+      } catch (err) {
+        // Todo: add error handle
+        console.log(err);
+      }
+    }
+    fetchUserLocation();
+  }, [])
 
   function chanceOfRain() {
     const currTime = new Date().toLocaleTimeString([], {hourCycle: 'h23'});

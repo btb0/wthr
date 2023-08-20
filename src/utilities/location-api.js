@@ -3,8 +3,6 @@ const GEO_API_BASE_URL = 'https://nominatim.openstreetmap.org';
 const IP_LOCATION_BASE_URL = 'https://ipgeolocation.abstractapi.com/v1';
 const IP_API_KEY = process.env.REACT_APP_IP_API_KEY;
 
-/* ========= Location Via Geolocation API ========= */
-
 export async function getUserLocation() {
   // Check if Geolocation API is supported in user's browser
   if (navigator.geolocation) {
@@ -23,6 +21,8 @@ export async function getUserLocation() {
     getCityFromIP();
   }
 }
+
+/* ========= Location Via Geolocation API ========= */
 
 async function getCityFromCoords(lat, long) {
   // Get user's current city using reverse geocoding

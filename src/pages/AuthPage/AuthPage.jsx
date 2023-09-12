@@ -3,7 +3,7 @@ import * as locationAPI from '../../utilities/location-api';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import LoginForm from '../../components/LoginForm/LoginForm';
 
-export default function AuthPage({ setUser }) {
+export default function AuthPage({ setUser, setUserCurrentLocation }) {
   const [formState, setFormState] = useState('LOGIN');
 
   function handleClick() {
@@ -12,7 +12,8 @@ export default function AuthPage({ setUser }) {
 
   async function getUserLocation() {
     const userLocation = await locationAPI.getUserLocation();
-    console.log(userLocation);
+    setUserCurrentLocation(userLocation.city);
+    console.log('yser location ', userLocation.city);
   }
 
   return (

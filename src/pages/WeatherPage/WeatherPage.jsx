@@ -7,22 +7,13 @@ import AirConditions from '../../components/AirConditions/AirConditions';
 import WeeklyForecast from '../../components/WeeklyForecast/WeeklyForecast';
 import { getUserLocation } from '../../utilities/location-api';
 
-export default function WeatherPage({ user, setUser }) {
+export default function WeatherPage({ user, setUser, userCurrentLocation }) {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState({});
 
   useEffect(() => {
-    async function fetchUserLocation() {
-      try {
-        // const userLocation = await getUserLocation();
-        // isnt working because more than one request per second being made to api (only allowed one)
-      } catch (err) {
-        // Todo: add error handle
-        console.log(err);
-      }
-    }
-    fetchUserLocation();
-  }, [])
+    setLocation(userCurrentLocation);
+  }, [userCurrentLocation]);
 
   function chanceOfRain() {
     const currTime = new Date().toLocaleTimeString([], {hourCycle: 'h23'});

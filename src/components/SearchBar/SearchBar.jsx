@@ -25,7 +25,7 @@ export default function SearchBar({ location, setLocation, setWeatherData }) {
       placeholder='Search by City or Zip Code'
       onChange={handleChange}
       onKeyDown={(evt) => {
-        if (evt.key === 'Enter' && evt.target.value) {
+        if (evt.key === 'Enter' && location.trim() !== '') {
           handleSearch();
         }
       }}

@@ -21,7 +21,7 @@ export default function LoginForm({ setUser, getUserLocation }) {
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
-      // getUserLocation(); // TODO: delete this if needed - i think i am going to move to a useEffect instead
+      getUserLocation(); // TODO: delete this if needed - i think i am going to move to a useEffect instead
       setUser(user);
     } catch {
       setError('Log In Failed - Try Again');
